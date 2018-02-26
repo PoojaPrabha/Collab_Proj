@@ -1,0 +1,41 @@
+<span style="color:red" ng-if="error.code==1">{{error.message}}</span>
+<!--  {1,"Unable to register user details "} -->
+<div class="container">
+<form >
+<div class="form-group">
+
+<label>Enter Email Id</label>
+<input type="text" ng-model="user.email" class="form-control">
+</div>
+<span style="color:red" ng-if="error.code==2">{{error.message}}</span>
+<!-- {2,"Email Id already exists.. please enter different email address} -->
+
+<div class="form-group">
+<label>Enter Password</label>
+<input type="password" ng-model="user.password" class="form-control">
+</div>
+
+<div class="form-group">
+<label>Enter Firstname</label>
+<input type="text" ng-model="user.firstname" class="form-control">
+</div>
+
+<div class="form-group">
+<label>Enter Lastname</label>
+<input type="text" ng-model="user.lastname" class="form-control">
+</div>
+
+<div class="form-group">
+<label>Enter Phonenumber</label>
+<input type="text" ng-model="user.phonenumber" class="form-control">
+</div>
+
+
+Select Role:
+<input type="radio" ng-model="user.role" value="STUDENT"> STUDENT
+<input type="radio" ng-model="user.role" value="ALUMINI"> ALUMINI
+<input type="radio" ng-model="user.role" value="EMPLOYEE"> EMPLOYEE
+<input type="submit" ng-click="register()">
+
+</form>
+</div>
