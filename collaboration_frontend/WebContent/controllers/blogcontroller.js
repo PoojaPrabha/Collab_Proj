@@ -14,27 +14,29 @@ app.controller('BlogController', function($scope, $location, BlogService,
 				$location.path('/login')
 		})
 	}
-	
 
 	// List of blogs waiting for approval
 	if ($rootScope.loggedInUser.role == 'ADMIN') {
-		BlogService.getBlogsWaitingForApproval().then(
-				function(response) {
-					$scope.blogsWaitingForApproval = response.data // select * from blogpost where approved=false
-					
-					//alert('blogs waiting for approval size ' + $scope.blogsWaitingForApproval.length)
-				}, function(response) {
-					$rootScope.error = response.data
-					if (response.status == 401)
-						$location.path('/login')
-				})
+		BlogService.getBlogsWaitingForApproval().then(function(response) {
+			$scope.blogsWaitingForApproval = response.data // select * from
+															// blogpost where
+															// approved=false
+
+			// alert('blogs waiting for approval size ' +
+			// $scope.blogsWaitingForApproval.length)
+		}, function(response) {
+			$rootScope.error = response.data
+			if (response.status == 401)
+				$location.path('/login')
+		})
 	}
-	
+
 	// List of blogs approved
 	BlogService.getApprovedBlogs().then(function(response) {
-		$scope.blogsApproved = response.data // select * from blogpost where approved=true
-		
-		//alert('blogs approved size ' + $scope.blogsApproved.length)
+		$scope.blogsApproved = response.data // select * from blogpost where
+												// approved=true
+
+		// alert('blogs approved size ' + $scope.blogsApproved.length)
 	}, function(response) {
 		$rootScope.error = response.data
 		if (response.status == 401)
@@ -42,6 +44,7 @@ app.controller('BlogController', function($scope, $location, BlogService,
 	})
 
 	$scope.addBold = function(blog) {
+		console.log('entering addBold')
 		if (blog.blogContent == undefined)
 			blog.blogContent = ""
 		blog.blogContent = blog.blogContent + "<b></b>"

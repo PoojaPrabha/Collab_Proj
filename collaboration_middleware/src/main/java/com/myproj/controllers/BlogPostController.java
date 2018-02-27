@@ -111,7 +111,7 @@ public class BlogPostController {
 
 	@RequestMapping(value="/updatelikes/{id}",method=RequestMethod.PUT)
 	public ResponseEntity<?> updateLikes(@PathVariable int id,HttpSession session){
-		//id is 735
+		
 		String email=(String)session.getAttribute("loginId");
 		if(email==null){
 			ErrorClazz error=new ErrorClazz(4,"Unauthrozied access.. Please login");
