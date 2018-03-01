@@ -46,14 +46,14 @@ app.controller('BlogPostDetailController', function($scope, $routeParams,
 	}
 
 	$scope.blogApproved = function(id) {
-	BlogService.blogApproved(id).then(function(response) {
-		$location.path('/getblogs')
-	}, function(response) {
-	$rootScope.error = response.data;
-	if (response.status == 401)
-	$location.path('/login')
-	})
-		alert('blog is approved')
+		BlogService.blogApproved(id).then(function(response) {
+			$location.path('/getblogs')
+		}, function(response) {
+			$rootScope.error = response.data;
+			if (response.status == 401)
+				$location.path('/login')
+		})
+		// alert('blog is approved')
 	}
 	$scope.blogRejected = function(id, rejectionReason) {
 		BlogService.blogRejected(id, rejectionReason).then(function(response) {
@@ -64,8 +64,37 @@ app.controller('BlogPostDetailController', function($scope, $routeParams,
 				$location.path('/login')
 
 		})
-		alert('blog is rejected ' + rejectionReason)
+		// alert('blog is rejected ' + rejectionReason)
 
 	}
+	
+	
+	$scope.addComment=function(commentTxt,blogPost){
+		blogComment={}
+		blogComment.commentTxt=commentTxt
+		blogComment.blogPost=blogPost;
+		BlogService.addComment(blogComment).then(
+				function(response){
+					getAllBlogComments(id)
+				},
+				function(response){
+					$rootScope.error=response.data;
+					if(response.status == 401)
+						$location.path('/login')
+						else
+							console.log(response.data)
+				})
+	}
+	function getAllBlogComments(id){
+		BlogService.getAllBlogComments(id).then(
+				function(response){
+					$scope.blogComments=response.data
+				},function(response){
+			       $rootScope.error=response.data;
+			       if(response.status == 401)
+			    	   $location.path('/login')
+		})
 
+		}	
+	getAllBlogComments(id)
 })
