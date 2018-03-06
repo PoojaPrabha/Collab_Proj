@@ -26,7 +26,7 @@
 					<div>
 						<br><b><a href="#/getblog/{{blog.id}}">{{blog.blogTitle}}</a></b><br> 
 						<b>Author:</b>{{blog.postedBy.firstname}}&nbsp;{{blog.postedBy.lastname}}&nbsp;
-						<img src="http://localhost:8081/collaboration_middleware/getimage/{blog.postedBy.email}}" width="40px" height="40px">
+						<img src="http://localhost:8081/collaboration_middleware/getimage/{{blog.postedBy.email}}" width="40px" height="40px">
 						<b>Posted On:</b>{{blog.postedOn | date:'medium'}} <br>
 					</div>
 				</div>
