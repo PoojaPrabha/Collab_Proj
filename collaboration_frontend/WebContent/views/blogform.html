@@ -1,15 +1,13 @@
-
-
 <div class="container">
+
 <span style="color:red">{{error.message}}</span>
 	<form>
-
 		<div class="form-group">
 			<label>Blog Title</label> 
 			<input type="text" ng-model="blog.blogTitle" class="form-control">
 		</div>
 		<div class="form-group">
-			<label>Content</label>
+			<label>Blog Content</label>
 			<textarea rows="4" cols="15" ng-model="blog.blogContent" class="form-control"></textarea>
 
 			<button ng-click="addBold(blog)">Bold</button>
@@ -29,4 +27,3 @@
 	</form>
 
 </div>
-
